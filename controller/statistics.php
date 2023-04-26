@@ -1,6 +1,5 @@
 <?php 
-require '../includes/database.php';
-require '../includes/dao.php';
+require 'call_db.php';
 $credit_data = getAvgCreditScore();
 $labels= array();
 $data = array();
@@ -21,12 +20,36 @@ integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
 crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
 
-<!--
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-<script src="../app.js"></script>
--->
+<div>
+    <div class="card mb-3" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">Total customers per country</h5>
+            <table>
+                <thead>
+                  <tr>
+                    <th>Geography</th>
+                    <th>Male</th>
+                    <th>Female</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($country_data as $index=>$value): ?>
+                    <tr>
+                        <td><?php echo $country_data[$index]; ?></td>
+                        <td><?php echo $male_data[$index]; ?></td>
+                        <td><?php echo $female_data[$index]; ?></td>
+                        <td><?php echo $total_data[$index]; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+            <a href="countrywise_count.php" class="btn btn-primary">View graph</a>
+        </div>
+    </div>
+</div>
 <p style="text-align:left;">table data<canvas  id="chartjs_bar"></canvas></p>
 
 <?php include '../footer.php'; ?>
@@ -59,6 +82,7 @@ crossorigin="anonymous"></script>
             }
         }
     })
+
     /*
                 var myChart = new Chart(ctx, {
                     type: 'bar',

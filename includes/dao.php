@@ -14,6 +14,21 @@ function getTableData() {
 
 }
 
+// Per country total customers
+function getTotalCustomersDataPerCountry() {
+    echo "Calling function";
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "SELECT geography, COUNT(*) AS total, SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS male, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS female FROM churn GROUP BY geography;";
+    $statement = $db->prepare($query);
+    $statement->execute();
+
+    $rows = $statement->fetchAll();
+    $statement->closeCursor();
+    return $rows;
+}
+
 function getAvgCreditScore(){
     $database = BankDatabase::getInstance();
     $db = $database->connect();
