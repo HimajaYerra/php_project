@@ -27,4 +27,21 @@ function getAvgCreditScore(){
     return $rows;
 }
 
+function updateTableRow($customer_id, $surname, $credit_score, $is_active, $exited) {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "UPDATE churn SET surname=:surname, credit_score=:credit_score, is_active=:is_active, exited=:exited WHERE customer_id=:customer_id;";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":customer_id", $customer_id);
+    $statement->bindValue(":surname", $surname);
+    $statement->bindValue(":credit_score", $credit_score);
+    $statement->bindValue(":is_active", $is_active);
+    $statement->bindValue(":exited", $exited);
+    $statement->execute();
+    $statement->closeCursor();
+    return 0;
+    //return $statement->rowCount();
+}
+
 ?>

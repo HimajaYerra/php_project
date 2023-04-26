@@ -1,0 +1,73 @@
+.header-content {
+    padding: 16px 24px 16px 24px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto 200px auto 200px;
+}
+
+.footer-content {
+    padding: 16px 24px 16px 24px;
+    display: flex;
+    width: 100%;
+    margin: auto 200px auto 200px;
+    justify-content: flex-end;
+}
+
+.container {
+    padding: 20px 0 20px 0;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.navbar-nav {
+    margin: auto 200px auto 200px;
+}
+
+.main-section {
+    margin: 100px 200px 100px 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.loan-section {
+    margin: 100px 200px 100px 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.loan-section-header {
+    margin: auto 200px auto 200px;
+}
+
+.nav-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.nav-link {
+    color: white;
+    font-weight: bold;
+}
+.nav-item>a {
+    border-bottom: 5px solid;
+    border-color: transparent;
+    padding: 0px;
+}
+.nav-item>a:hover {
+    color: lightgreen;
+    border-bottom-color: lightgreen;
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none 
+}
+
+.img-section {
+    height: 600px;
+    position: absolute;
+    width: 100%;
+}
