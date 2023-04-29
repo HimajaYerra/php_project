@@ -19,7 +19,10 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
 <script src="../app.js"></script>
-<?php include '../header.php'; ?>
+<?php include '../header.php'; 
+global $employees;
+global $test;
+?>
 
 
 <section class="container" style="background-color:#f4f4f4">   
@@ -92,9 +95,10 @@
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
     </p>
-    <form method="post" action="../view/product_catalog.php?action=pay" data-js-validate="true" data-js-highlight-state-msg="true" data-js-show-valid-msg="true">
     <button class="btn" type="submit" name="confirm" id="payBtn">Pay Now</button>
-</form>
+    <!--<form method="post" action="" data-js-validate="true" data-js-highlight-state-msg="true" data-js-show-valid-msg="true">
+    
+</form> -->
         </div>
     </div>
     </div>
@@ -103,7 +107,7 @@
 </div>
 </section>
 
-<div class="modal" id="myModal" role="dialog">
+<div class="modal" id="myModal" role="dialog" data-backdrop="false">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -114,7 +118,11 @@
             <div class="modal-body">
                 "Your about to make a online payment. Click 'Edit' to review the data before proceeding or click 'Continue' to confirm the details for payment."
                 <button class="btn btn-default" data-dismiss="modal">Edit</button>
-                <button class="btn btn-primary" id="continuebtn">Continue</button>
+                <button class="btn btn-primary" id="continuebtn">Continue</button><br>
+                <?php 
+                global $employees;
+                global $test;
+                echo $test; ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

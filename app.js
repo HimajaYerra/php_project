@@ -66,8 +66,7 @@ $(document).ready(()=>{
     //})
 
     $('#payBtn').on('click',function(e){
-        
-        e.preventDefault();
+       // $('#myModal').dialog('open');
         $('#myModal').modal('show');
 
     });
