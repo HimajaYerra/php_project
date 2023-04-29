@@ -1,5 +1,40 @@
 <?php 
-require 'call_db.php';
+
+require '../includes/database.php';
+require '../includes/dao.php';
+
+
+$action = filter_input(INPUT_POST,'action');
+if($action == NULL){
+    $action = filter_input(INPUT_GET,'action');
+    if($action == NULL){
+        $action = 'show_stats';
+    }
+}
+
+if($action == 'show_stats'){
+    
+
+    include '../view/statistics.php';
+}
+if($action == 'bar'){
+    echo "Bar graph";
+    $count_data = getTotalCustomersDataPerCountry();
+    $country_data = array();
+    $male_data = array();
+    $female_data = array();
+    $total_data = array();
+    foreach($count_data as $row_data):
+    $country_data['country'] = $row_data['geography'];
+    ($row_data['gender'] == 'Male') ? $male_data[] =$row_data['gender'] : $female_data[] = $row_data['gender'];
+    $total_data[] = $row_data['total'];
+    endforeach;
+    foreach($country_data as $index)
+        echo $index;
+    include '../view/countrywise_count.php';
+}
+if($action == 'pie'){
+
 $credit_data = getAvgCreditScore();
 $labels= array();
 $data = array();
@@ -7,55 +42,22 @@ foreach ($credit_data as $row_data) :
     $labels[] = $row_data['age'];
     $data[] = $row_data['credit_score'];
 endforeach;
+include '../view/credit_score_data.php';
+}
 
-include '../header.php'; 
+
+
+
+
+
+
 ?>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="../css/style.css">
-
-<script src="https://code.jquery.com/jquery-3.6.3.js" 
-integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" 
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
-
-<div>
-    <div class="card mb-3" style="width: 40rem;">
-        <div class="card-body">
-            <h5 class="card-title">Total customers per country</h5>
-            <table>
-                <thead>
-                  <tr>
-                    <th>Geography</th>
-                    <th>Male</th>
-                    <th>Female</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($country_data as $index=>$value): ?>
-                    <tr>
-                        <td><?php echo $country_data[$index]; ?></td>
-                        <td><?php echo $male_data[$index]; ?></td>
-                        <td><?php echo $female_data[$index]; ?></td>
-                        <td><?php echo $total_data[$index]; ?></td>
-                    </tr>
-                  <?php endforeach; ?>
-                </tbody>
-            </table>
-            <a href="countrywise_count.php" class="btn btn-primary">View graph</a>
-        </div>
-    </div>
-</div>
-<p style="text-align:left;">table data<canvas  id="chartjs_bar"></canvas></p>
-
-<?php include '../footer.php'; ?>
+<!--
 <?php echo '<link href="../css/style.css" rel="stylesheet">'; ?>
 
+
 <script type="text/javascript">
+    
     var ctx = document.getElementById("chartjs_bar").getContext('2d');
     var myChart = new Chart(ctx, {
         type: "line",
@@ -83,7 +85,7 @@ crossorigin="anonymous"></script>
         }
     })
 
-    /*
+ 
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
@@ -113,8 +115,10 @@ crossorigin="anonymous"></script>
  
                 }
                 });
-                */
-    </script>
+                
+    </script> 
+
+            -->
 
 
 

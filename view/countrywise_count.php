@@ -1,5 +1,4 @@
 <?php
-require "call_db.php";
 //global $country_data;
 //global $male_data;
 //global $female_data;

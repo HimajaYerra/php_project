@@ -38,7 +38,7 @@
                     </div>
                 </div>    
             </div>
-            <div class="main-section">
+            <div class="main-section" style="background-color:#f4f4f4;">
                 <div class="card mb-3" style="width: 40rem;">
                     <div class="card-body">
                       <h5 class="card-title">CD Specials</h5>
@@ -70,11 +70,11 @@
                     </div>
                 </div>
             </div>
-            <div class="loan-section-header">
+            <div class="loan-section-header" style="background-color:#f4f4f4">
                 <p style="color: #0d6efd; font-size: xx-large; font-weight: 500;">Borrowing money is a big deal. We're ready to help.</p>
                 <p style="font-size: medium;">From calculators and rate charts to get you started, to experienced loan officers and bankers, VBank has answers for all your loan and mortgage questions.</p>
             </div>
-            <div class="loan-section">
+            <div class="loan-section" style="background-color:#f4f4f4">
                 <div class="card mb-3" style="width: 20rem;">
                     <img class="card-img-top" src="images/house_loan.jpg" alt="House loan">
                     <div class="card-body">

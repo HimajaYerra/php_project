@@ -20,7 +20,8 @@ function getTotalCustomersDataPerCountry() {
     $database = BankDatabase::getInstance();
     $db = $database->connect();
 
-    $query = "SELECT geography, COUNT(*) AS total, SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS male, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS female FROM churn GROUP BY geography;";
+    $query = "SELECT geography, gender, count(gender) AS total FROM churn GROUP BY geography, gender;";
+    //$query = "SELECT geography, COUNT(*) AS total, SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS male, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS female FROM churn GROUP BY geography;";
     $statement = $db->prepare($query);
     $statement->execute();
 
@@ -55,8 +56,8 @@ function updateTableRow($customer_id, $surname, $credit_score, $is_active, $exit
     $statement->bindValue(":exited", $exited);
     $statement->execute();
     $statement->closeCursor();
-    return 0;
-    //return $statement->rowCount();
+    //return 0;
+    return $statement->rowCount();
 }
 
 ?>

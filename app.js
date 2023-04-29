@@ -12,14 +12,14 @@ $(document).ready(()=>{
 
     $('#edit-modal').dialog({
                     autoOpen: false,
-                    position: {
-                        my: "center",
-                        at: "center"
-                    }
+                    modal : true
                 });
 
-                // Add event listener to edit buttons
-                $('.edit-button').on('click', function() {
+    // Add event listener to edit buttons
+    $('.edit-button').on('click', function() {
+
+        // Open the pop-up
+                    $('#edit-modal').dialog('open');
                     var row = $(this).closest('tr');
                     var customer_id = row.find('td:eq(0)').text();
                     var surname = row.find('td:eq(1)').text();
@@ -34,8 +34,7 @@ $(document).ready(()=>{
                     $('#is_active-input').val(is_active);
                     $('#exited-input').val(exited);
 
-                    // Open the pop-up
-                    $('#edit-modal').dialog('open');
+                    
                 });
 
                 // Add event listener to save button in the pop-up
@@ -52,7 +51,7 @@ $(document).ready(()=>{
 
                     // Close the pop-up
                     $('#edit-modal').hide();    
-                });
+                }); 
 
     //$("#data_table tbody").on('click','td',function(){
     //    var data = table.row($(this).parents('tr')).data();
@@ -66,7 +65,17 @@ $(document).ready(()=>{
     //    console.log(data);
     //})
 
-   
+    $('#payBtn').on('click',function(e){
+        
+        e.preventDefault();
+        $('#myModal').modal('show');
+
+    });
+
+    $('#continuebtn').on('click',function(){
+
+        $('form').submit();
+    });
     
 })
 

@@ -15,3 +15,23 @@ foreach($count_data as $row_data):
 endforeach;
 
 ?>
+<table>
+                <thead>
+                  <tr>
+                    <th>Geography</th>
+                    <th>Male</th>
+                    <th>Female</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($country_data as $index): ?>
+                    <tr>
+                        <td><?php echo $country_data[$index]; ?></td>
+                        <td><?php echo $male_data[$index]; ?></td>
+                        <td><?php echo $female_data[$index]; ?></td>
+                        <td><?php echo $total_data[$index]; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
