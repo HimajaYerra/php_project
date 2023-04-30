@@ -14,6 +14,20 @@ function getTableData() {
 
 }
 
+function getUsernames() {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "SELECT surname FROM churn LIMIT 1000;";
+    $statement = $db->prepare($query);
+    $statement->execute();
+
+    $rows = $statement->fetchAll();
+    $statement->closeCursor();
+    return $rows;
+
+}
+
 // Per country total customers
 function getTotalCustomersDataPerCountry() {
     echo "Calling function";

@@ -76,5 +76,12 @@ $(document).ready(()=>{
         $('form').submit();
     });
     
+    $('#view_graph').on('click',function(e){
+        // $('#myModal').dialog('open');
+         $('#pieModal').modal('show');
+ 
+     });
+    
+
 })
 

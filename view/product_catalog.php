@@ -35,10 +35,7 @@ global $test;
             <p class="card-text text-light">
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.   
+       
     </p>
             <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
         </div>
@@ -53,10 +50,7 @@ global $test;
             <p class="card-text text-light">
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.   
+      
     </p>
             <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
         </div>
@@ -71,10 +65,7 @@ global $test;
             <p class="card-text text-light">
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.   
+        
     </p>
             <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
         </div>
@@ -90,10 +81,7 @@ global $test;
             <p class="card-text text-light">
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
+      
     </p>
     <button class="btn" type="submit" name="confirm" id="payBtn">Pay Now</button>
     <!--<form method="post" action="" data-js-validate="true" data-js-highlight-state-msg="true" data-js-show-valid-msg="true">
@@ -116,13 +104,26 @@ global $test;
                 <h4 class="modal-title">Proccess Payment</h4>
             </div>
             <div class="modal-body">
-                "Your about to make a online payment. Click 'Edit' to review the data before proceeding or click 'Continue' to confirm the details for payment."
+        <?php 
+        global $employees;
+        global $test;
+        echo $test; ?>
+        
+        <label for="service">Select Service:</label>
+        <select name="users" id="users">
+        <?php  foreach($users as $user): ?>
+        <option value=<?php echo $user; ?>><?php echo $user; ?></option>
+        <?php endforeach; ?>
+        </select>
+        
+
+            
                 <button class="btn btn-default" data-dismiss="modal">Edit</button>
                 <button class="btn btn-primary" id="continuebtn">Continue</button><br>
+
                 <?php 
-                global $employees;
-                global $test;
-                echo $test; ?>
+                
+                ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

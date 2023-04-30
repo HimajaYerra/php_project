@@ -10,8 +10,11 @@ if($action == NULL){
         $action = 'show_catalog';
 
     }
-    $employees = getTableData();
-    $test = 'hi';
+    $users = array();
+    $employees = getUsernames();
+    foreach($employees as $user):
+        $users[] = $user['surname'];
+    endforeach;
 }
 if($action == 'pay'){
     $employees = getTableData();

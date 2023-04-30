@@ -66,7 +66,7 @@
 
                 
 
-                <div id="edit-modal" tabindex="-1" role="dialog" class="bg-primary text-light">
+                <div id="edit-modal" tabindex="-1" role="dialog" class="text-dark" style="background-color: #f4f4f4;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -75,7 +75,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body p-3">
                             <form action="?action=edit" method="post">
                                 <label for="customer_id-input">Customer ID</label><br>
                                 <input type="text" id="customer_id-input" name="customer_id-input"><br>

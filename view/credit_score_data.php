@@ -10,7 +10,9 @@ crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
 
+
 <p style="text-align:left;"><canvas  id="chartjs_bar"></canvas></p>
+
 <?php 
 global $labels;
 global $data;

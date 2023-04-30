@@ -45,7 +45,7 @@ crossorigin="anonymous"></script>
       Some quick example text to build on the card title and make up the bulk of the
       card's content.
     </p>
-            <a href="../controller/statistics.php?action=pie" class="btn btn-primary">View graph</a>
+            <a href="../controller/statistics.php?action=pie" class="btn btn-primary" id="view_graph">View graph</a>
         </div>
     </div>
     </div>
