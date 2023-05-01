@@ -74,4 +74,18 @@ function updateTableRow($customer_id, $surname, $credit_score, $is_active, $exit
     return $statement->rowCount();
 }
 
+function deleteTableRow($customer_id) {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "DELETE FROM churn WHERE customer_id=:customer_id;";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":customer_id", $customer_id);
+   
+    $statement->execute();
+    $statement->closeCursor();
+    //return 0;
+    return $statement->rowCount();
+}
+
 ?>

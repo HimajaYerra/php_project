@@ -62,7 +62,7 @@ $(document).ready(()=>{
     //    if(table.cell(this).index().column==6){
     //        alert("Delete");
     //    }
-    //    console.log(data);
+      //  console.log(data[0]);
     //})
 
     $('#payBtn').on('click',function(e){
@@ -70,10 +70,25 @@ $(document).ready(()=>{
         $('#myModal').modal('show');
 
     });
+    $('#payBtn2').on('click',function(e){
+        // $('#myModal').dialog('open');
+         $('#myModal').modal('show');
+ 
+     });
+     $('#payBtn3').on('click',function(e){
+        // $('#myModal').dialog('open');
+         $('#myModal').modal('show');
+ 
+     });
+     $('#payBtn4').on('click',function(e){
+        // $('#myModal').dialog('open');
+         $('#myModal').modal('show');
+ 
+     });
 
     $('#continuebtn').on('click',function(){
-
-        $('form').submit();
+        $('#hi').submit();
+        //$('#myModal').modal('hide');
     });
     
     $('#view_graph').on('click',function(e){

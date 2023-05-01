@@ -19,12 +19,7 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
 <script src="../app.js"></script>
-<?php include '../header.php'; 
-global $employees;
-global $test;
-?>
-
-
+<?php include '../header.php';  ?>
 <section class="container" style="background-color:#f4f4f4">   
      <div class="row g-3 p-2">
     <div class="col-md-3">
@@ -37,13 +32,13 @@ global $test;
       card's content.
        
     </p>
-            <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
+    <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn4">Suggest</button>
         </div>
     </div>
     </div>
     </div>
     <div class="col-md-3">
-    <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/bar_graph2.jpg');">
+    <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/pie_chart.jpg');">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
         <div class="card-body">
             <h5 class="card-title text-light">Car Loan</h5>
@@ -52,7 +47,7 @@ global $test;
       card's content.
       
     </p>
-            <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
+    <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn3">Suggest</button>
         </div>
     </div>
     </div>
@@ -67,7 +62,7 @@ global $test;
       card's content.
         
     </p>
-            <a href="../controller/statistics.php?action=bar" class="btn btn-primary">View graph</a>
+    <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn2">Suggest</button>
         </div>
     </div>
     </div>
@@ -83,7 +78,7 @@ global $test;
       card's content.
       
     </p>
-    <button class="btn" type="submit" name="confirm" id="payBtn">Pay Now</button>
+    <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn">Suggest</button>
     <!--<form method="post" action="" data-js-validate="true" data-js-highlight-state-msg="true" data-js-show-valid-msg="true">
     
 </form> -->
@@ -95,36 +90,44 @@ global $test;
 </div>
 </section>
 
-<div class="modal" id="myModal" role="dialog" data-backdrop="false">
+<div class="modal" id="myModal" role="dialog" data-backdrop="false" >
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Proccess Payment</h4>
+                <h4 class="modal-title">Offer Selected Service to User</h4>
             </div>
-            <div class="modal-body">
+            <form id = "email_form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+
+            <div class="modal-body" style="background-color:#f4f4f4">
         <?php 
         global $employees;
-        global $test;
-        echo $test; ?>
+        $services = ['Home Loan', 'Personal Loan', 'Credit Card', 'Auto Loan'];         ?>
         
-        <label for="service">Select Service:</label>
+        <label for="user">User:</label>
         <select name="users" id="users">
         <?php  foreach($users as $user): ?>
         <option value=<?php echo $user; ?>><?php echo $user; ?></option>
         <?php endforeach; ?>
         </select>
-        
-
+        <br><br>
+        <label for="service">Offer:</label>
+        <select name="service" id="service">
+        <?php  foreach($services as $service): ?>
+        <option value=<?php echo $service; ?>><?php echo $service; ?></option>
+        <?php endforeach; ?>
+        </select>
             
-                <button class="btn btn-default" data-dismiss="modal">Edit</button>
-                <button class="btn btn-primary" id="continuebtn">Continue</button><br>
-
-                <?php 
+                <br><br>
+                   <a href="mailto:@vbank.com?subject=Mail from VBank.com" class="btn btn-primary"> Send Email</a>
+                   <!--<div class="btn btn-primary" id="continuebtn">Send Email</div> -->
+                   
+                   <br>
                 
-                ?>
             </div>
+            </form>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>

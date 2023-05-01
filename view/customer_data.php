@@ -55,8 +55,9 @@
                                     <i class="edit-button bi bi-pencil-fill" style="cursor:pointer"></i>
                                 </td>
                                 <td class="text-center">
-                                    <i class="delete-button bi bi-trash" style="cursor:pointer"></i>
-                                </td>        
+                                <form action="../controller/customer_data.php?action=<?php echo $employee['customer_id'];?>" method="post">
+ <i class="delete-button bi bi-trash" style="cursor:pointer"></i></form>  
+                                </td>      
                             </tr>
                             <?php endforeach; ?>
                         </table>

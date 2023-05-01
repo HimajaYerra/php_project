@@ -36,5 +36,24 @@ else if($action == 'edit'){
         echo "<script>alert('Error updating the row!');</script>";    }
         
 }
+else {
+    echo "hikkk";
+    $newCustomerId = filter_input(INPUT_POST, "action", FILTER_VALIDATE_INT);
+                                
+  
+    if (deleteTableRow($newCustomerId) == 1)
+    {      
+        $employees = getTableData();
+
+            include "../view/customer_data.php";                               
+        
+    } 
+    else {
+        $employees = getTableData();
+        include "../view/customer_data.php";
+        echo "<script>alert('Error updating the row!');</script>";    }
+        
+}
+
 ?>
 
