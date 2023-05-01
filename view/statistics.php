@@ -9,23 +9,24 @@ crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
 <?php include '../header.php'; ?>
-<section class="container" style="background-color:#f4f4f4">   
+<section class="container" style="background-color:#f4f4f4">  
+    <h1 class="justify-content-center">Graphical Representation of Customer Data</h1>
     <div class="graph-section-top">
         <section class="container" style="background-color:#f4f4f4">   
             <div class="row g-3 p-4 justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php include 'credit_score_data.php'; ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php include 'countrywise_count.php'; ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php include 'countrywise_salary.php'; ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php include 'countrywise_total_customers.php'; ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php include 'countrywise_customers_with_credit_card.php'; ?>
                 </div>
             </div>

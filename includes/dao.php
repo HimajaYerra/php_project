@@ -4,7 +4,7 @@ function getTableData() {
     $database = BankDatabase::getInstance();
     $db = $database->connect();
 
-    $query = "SELECT customer_id, surname, credit_score, is_active, exited FROM churn LIMIT 1000;";
+    $query = "SELECT customer_id, surname, credit_score, is_active, exited FROM churn WHERE is_active = 1 LIMIT 1000;";
     $statement = $db->prepare($query);
     $statement->execute();
 

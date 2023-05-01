@@ -55,8 +55,7 @@
                                     <i class="edit-button bi bi-pencil-fill" style="cursor:pointer"></i>
                                 </td>
                                 <td class="text-center">
-                                <form action="../controller/customer_data.php?action=<?php echo $employee['customer_id'];?>" method="post">
- <i class="delete-button bi bi-trash" style="cursor:pointer"></i></form>  
+                                     <i class="delete-button bi bi-trash" style="cursor:pointer"></i> 
                                 </td>      
                             </tr>
                             <?php endforeach; ?>
@@ -65,11 +64,12 @@
                 </div>
 
 
-                
+            </section> 
 
-                <div id="edit-modal" tabindex="-1" role="dialog" class="text-dark" style="background-color: #f4f4f4;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+
+            <div id="edit-modal" tabindex="-1" role="dialog" class="text-dark" style="background-color: #f4f4f4;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Modal title</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,9 +100,37 @@
                         
                            
                         
+                        </div>
                     </div>
+
                 </div>
+            </div>
+
+        <div id="delete-modal" tabindex="-1"  role="dialog" class="text-dark" style="background-color:#f4f4f4" >
+            <div class="modal-dialog" role="document" >
+                <!-- Modal content-->
+                <div class="modal-content">
+           
+
+                    <div class="modal-body" style="background-color:#f4f4f4">
+        
+                        <form id = "delete_user" action="?action=delete" method="post">
+
+                        <p>Are you sue you want to delete the customer?</p>
+                        <input type="hidden" id="customerid-input" name="customerid-input">
+            
+                   
+                        <button type="button" class="btn btn-primary" id="delete-btn" data-dismiss="modal">Confirm</button>
                 
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+       
+                </div>
+            </div>
+        </div>   
         </main>
         <footer>
             <?php include '../footer.php'; ?>

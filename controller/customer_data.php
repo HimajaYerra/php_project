@@ -29,9 +29,8 @@ if($action == 'show_customers'){
         echo "<script>alert('Error updating the row!');</script>";    
     }
 }
-else {
-    echo "hikkk";
-    $newCustomerId = filter_input(INPUT_POST, "action", FILTER_VALIDATE_INT);
+else if($action=='delete'){
+    $newCustomerId = filter_input(INPUT_POST, "customerid-input", FILTER_VALIDATE_INT);
                                 
   
     if (deleteTableRow($newCustomerId) == 1)

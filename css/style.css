@@ -88,3 +88,6 @@
 .modal-dialog {
     border: 1px solid blue;
 }
+.ui-dialog-titlebar-close {
+    display: none;
+ }

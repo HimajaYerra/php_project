@@ -22,14 +22,13 @@
 <?php include '../header.php';  ?>
 <section class="container" style="background-color:#f4f4f4">   
      <div class="row g-3 p-2">
-    <div class="col-md-3">
+    <div class="col-md-6">
     <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/bar_graph2.jpg');">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
         <div class="card-body">
             <h5 class="card-title text-light">Home Loan</h5>
             <p class="card-text text-light">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
+      Home loan helps customers fulfill there dreams of owning a house. Help your customer with the dream.
        
     </p>
     <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn4">Suggest</button>
@@ -37,14 +36,14 @@
     </div>
     </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-6">
     <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/pie_chart.jpg');">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
         <div class="card-body">
             <h5 class="card-title text-light">Car Loan</h5>
             <p class="card-text text-light">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
+            Car loan helps customers fulfill there dreams of owning a car. Help your customer with the dream.
+
       
     </p>
     <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn3">Suggest</button>
@@ -52,14 +51,14 @@
     </div>
     </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-6">
     <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/bar_graph2.jpg');">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
         <div class="card-body">
             <h5 class="card-title text-light">Credit Card</h5>
             <p class="card-text text-light">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
+            Credit Card helps customers life easy in doing all their payments. Help your customer with the dream.
+
         
     </p>
     <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn2">Suggest</button>
@@ -67,15 +66,14 @@
     </div>
     </div>
     </div>
-    <div class=" col-md-3">
+    <div class=" col-md-6">
     <div class="bg-image card d-flex justify-content-center align-items-center" style="background-image: url('../images/pie_chart.jpg');">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
        
         <div class="card-body">
             <h5 class="card-title text-light">Personal Loan</h5>
             <p class="card-text text-light">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
+      Personal loan is helpful for doing various things needed by your customer. Help them achieve teir dreams.
       
     </p>
     <button class="btn btn-primary text-light" type="submit" name="confirm" id="payBtn">Suggest</button>

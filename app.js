@@ -14,6 +14,10 @@ $(document).ready(()=>{
                     autoOpen: false,
                     modal : true
                 });
+    $('#delete-modal').dialog({
+                    autoOpen: false,
+                    modal : true
+                });
 
     // Add event listener to edit buttons
     $('.edit-button').on('click', function() {
@@ -35,10 +39,10 @@ $(document).ready(()=>{
                     $('#exited-input').val(exited);
 
                     
-                });
+    });
 
                 // Add event listener to save button in the pop-up
-                $('#save-btn').on('click', function() {
+    $('#save-btn').on('click', function() {
                     // Get the new values
                     var newCustomerId = $('#customer_id-input').val();
                     var newSurname = $('#surname-input').val();
@@ -51,8 +55,26 @@ $(document).ready(()=>{
 
                     // Close the pop-up
                     $('#edit-modal').hide();    
-                }); 
+    }); 
 
+
+    $('.delete-button').on('click', function() {
+                    //$('#delete-modal').modal('show');
+                    $('#delete-modal').dialog('open');
+                    var row = $(this).closest('tr');
+                    var customer_id = row.find('td:eq(0)').text();
+
+                    $('#customerid-input').val(customer_id);
+    });
+    $('#delete-btn').on('click', function() {
+                    $("#delete_user").submit();
+                    // Get the new values
+                    var newCustomerId = $('#customer_id-input').val();
+                    $('#delete-modal').hide();    
+    }); 
+    $('#close').on('click', function() {
+        $('#delete-modal').hide();  
+    });
     //$("#data_table tbody").on('click','td',function(){
     //    var data = table.row($(this).parents('tr')).data();
 
