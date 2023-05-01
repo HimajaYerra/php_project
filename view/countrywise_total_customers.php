@@ -9,48 +9,33 @@ crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
 
-<p style="text-align:left;"><canvas  id="chartjs_stackedbar"></canvas></p>
+<p style="text-align:left;"><canvas  id="chartjs_countrywise_total_customers"></canvas></p>
 
 <script type="text/javascript">
-    var ctxx = document.getElementById("chartjs_stackedbar").getContext('2d');
+    var ctxx = document.getElementById("chartjs_countrywise_total_customers").getContext('2d');
     var colors = ['rgb(0, 50, 100)', 'rgb(0, 100, 150)', 'rgb(0, 200, 250)']
 
     var cht = new Chart(ctxx, {
-        type: "bar",
+        type: "pie",
         data: {
-            labels: <?php echo json_encode($country_data); ?>,
+            labels: <?php echo json_encode($customers_per_country_countries); ?>,
             datasets: [
                 {
-                    label: 'Males',
-                    backgroundColor: colors[0],
-                    data: <?php echo json_encode($male_data); ?>
-                },
-                {
-                    label: 'Females',
-                    backgroundColor: colors[1],
-                    data: <?php echo json_encode($female_data); ?>
+                    data: <?php echo json_encode($customers_per_country_count); ?>,
+                    backgroundColor: colors,
+                    borderColor: colors,
+                    borderWidth: 1
                 }
             ]
         },
         options: {
             responsive: true,
             title: {
-                display: true,
-                text: 'Males vs females per country'
+            display: true,
+            text: 'Total customers by Country'
             },
             legend: {
                 position: 'bottom'
-            },
-            scales: {
-                xAxes: [{
-                    stacked: true,
-                }],
-                yAxes: [{
-                    stacked: true,
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
             }
         }
     })

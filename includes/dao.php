@@ -30,7 +30,6 @@ function getUsernames() {
 
 // Per country total customers
 function getTotalCustomersDataPerCountry() {
-    echo "Calling function";
     $database = BankDatabase::getInstance();
     $db = $database->connect();
 
@@ -72,6 +71,48 @@ function updateTableRow($customer_id, $surname, $credit_score, $is_active, $exit
     $statement->closeCursor();
     //return 0;
     return $statement->rowCount();
+}
+
+function getMinMaxSalary() {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "SELECT geography, MIN(est_salary) as min_salary, MAX(est_salary) as max_salary, AVG(est_salary) as avg_salary FROM churn GROUP BY geography;";
+
+    $statement = $db->prepare($query);
+    $statement->execute();
+
+    $rows = $statement->fetchAll();
+    $statement->closeCursor();
+    return $rows;
+}
+
+function getCustomersPerCountry() {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "SELECT geography, COUNT(customer_id) as total_customers from churn GROUP BY geography;";
+    
+    $statement = $db->prepare($query);
+    $statement->execute();
+
+    $rows = $statement->fetchAll();
+    $statement->closeCursor();
+    return $rows;
+}
+
+function getCustomerCountWithCreditCardPerCountry() {
+    $database = BankDatabase::getInstance();
+    $db = $database->connect();
+
+    $query = "SELECT geography, COUNT(has_crcard) as total_customers_with_crcard from churn WHERE has_crcard = 1 GROUP BY geography;";
+    
+    $statement = $db->prepare($query);
+    $statement->execute();
+
+    $rows = $statement->fetchAll();
+    $statement->closeCursor();
+    return $rows;
 }
 
 ?>
