@@ -20,7 +20,9 @@ global $data;
 ?>
 
 <script type="text/javascript">
-var ctx = document.getElementById("chartjs_bar").getContext('2d');
+    var ctx = document.getElementById("chartjs_bar").getContext('2d');
+    var colors = ['rgb(0, 50, 100)', 'rgb(0, 100, 150)', 'rgb(0, 200, 250)']
+    
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
@@ -28,12 +30,17 @@ var ctx = document.getElementById("chartjs_bar").getContext('2d');
             datasets: [{
                 fill: false,
                 lineTension: 0,
-                backgroundColor:"rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
+                backgroundColor: colors[1],
+                borderColor: colors[2],
                 data: <?php echo json_encode($data); ?>
             }]
         },
         options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Age vs avg. credit score'
+            },
             legend: {display: false},
             scales: {
                 xAxes: [{
@@ -41,7 +48,17 @@ var ctx = document.getElementById("chartjs_bar").getContext('2d');
                     beginAtZero: true,
                     steps: 10,
                     stepValue: 5,
-                    max: 100
+                    max: 100,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Age'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Avg. credit score'
+                    }
                 }]
             }
         }

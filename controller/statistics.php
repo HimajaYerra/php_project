@@ -3,7 +3,6 @@
 require '../includes/database.php';
 require '../includes/dao.php';
 
-
 $action = filter_input(INPUT_POST,'action');
 if($action == NULL){
     $action = filter_input(INPUT_GET,'action');
@@ -13,113 +12,63 @@ if($action == NULL){
 }
 
 if($action == 'show_stats'){
-    
-
-    include '../view/statistics.php';
-}
-if($action == 'bar'){
-    echo "Bar graph";
     $count_data = getTotalCustomersDataPerCountry();
+    $array_data = array();
     $country_data = array();
     $male_data = array();
     $female_data = array();
     $total_data = array();
-    foreach($count_data as $row_data):
-    $country_data['country'] = $row_data['geography'];
-    ($row_data['gender'] == 'Male') ? $male_data[] =$row_data['gender'] : $female_data[] = $row_data['gender'];
-    $total_data[] = $row_data['total'];
-    endforeach;
-    foreach($country_data as $index)
-        echo $index;
-    include '../view/countrywise_count.php';
-}
-if($action == 'pie'){
-
-$credit_data = getAvgCreditScore();
-$labels= array();
-$data = array();
-foreach ($credit_data as $row_data) :
-    $labels[] = $row_data['age'];
-    $data[] = $row_data['credit_score'];
-endforeach;
-include '../view/credit_score_data.php';
-}
-
-
-
-
-
-
-
-?>
-<!--
-<?php echo '<link href="../css/style.css" rel="stylesheet">'; ?>
-
-
-<script type="text/javascript">
     
-    var ctx = document.getElementById("chartjs_bar").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: <?php echo json_encode($labels); ?>,
-            datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor:"rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: <?php echo json_encode($data); ?>
-            }]
-        },
-        options: {
-            legend: {display: false},
-            scales: {
-                xAxes: [{
-                    display: true,
-                    beginAtZero: true,
-                    steps: 10,
-                    stepValue: 5,
-                    max: 100
-                }]
-            }
-        }
-    })
+    $countries = array();
+    $countries = array_column($count_data, 'geography');
+    $countries = array_unique($countries);
 
- 
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: <?php echo json_encode($labels); ?>,
-                        datasets: [{
-                            backgroundColor: [
-                               "#5969aa",
-                                "#ff407b",
-                                "#331523",
-                                "#ffc750"
-                            ],
-                            data: <?php echo json_encode($data); ?>,
-                        }]
-                    },
-                    options: {
-                           legend: {
-                        display: true,
-                        position: 'bottom',
- 
-                        labels: {
-                            fontColor: '#71748d',
-                            fontFamily: 'Circular Std Book',
-                            fontSize: 14,
-                        }
-                    },
- 
- 
-                }
-                });
-                
-    </script> 
+    foreach($count_data as $row_data):
+        $array_data[$row_data['geography']][$row_data['gender']]=$row_data['total'];
+    endforeach;
 
-            -->
+    foreach($array_data as $key=> $value):
+        array_push($country_data, $key);
+        array_push($male_data, $value['Male']);
+        array_push($female_data, $value['Female']);
+        array_push($total_data, $value['Male'] + $value['Female']);
+    endforeach;
 
+    $credit_data = getAvgCreditScore();
+    $labels= array();
+    $data = array();
+    foreach ($credit_data as $row_data) :
+        $labels[] = $row_data['age'];
+        $data[] = $row_data['credit_score'];
+    endforeach;
 
+    $salary_data = getMinMaxSalary();
+    $salary_country_data = array();
+    $salary_min_data = array();
+    $salary_max_data = array();
+    $salary_avg_data = array();
+    foreach ($salary_data as $row_data):
+        array_push($salary_country_data, $row_data['geography']);
+        array_push($salary_min_data, $row_data['min_salary']);
+        array_push($salary_max_data, $row_data['max_salary']);
+        array_push($salary_avg_data, $row_data['avg_salary']);
+    endforeach;
 
+    $customers_per_country_data = getCustomersPerCountry();
+    $customers_per_country_countries = array();
+    $customers_per_country_count = array();
+    foreach ($customers_per_country_data as $row_data):
+        array_push($customers_per_country_countries, $row_data['geography']);
+        array_push($customers_per_country_count, $row_data['total_customers']);
+    endforeach;
 
+    $customers_with_credit_card_per_country_data = getCustomerCountWithCreditCardPerCountry();
+    $customers_with_credit_card_countries = array();
+    $customers_with_credit_card_count = array();
+    foreach ($customers_with_credit_card_per_country_data as $row_data):
+        array_push($customers_with_credit_card_countries, $row_data['geography']);
+        array_push($customers_with_credit_card_count, $row_data['total_customers_with_crcard']);
+    endforeach;
+
+    include '../view/statistics.php';
+}
